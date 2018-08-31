@@ -1,0 +1,11 @@
+"IFC","Functional_Class","Max AB Lanes (AM)","Max AB Lanes (OP)","Max AB Lanes (PM)","Max BA Lanes (AM)","Max BA Lanes (OP)","Max BA Lanes (PM)","Flag"
+1,"Freeway",7,7,7,0,0,0,0
+2,"Prime arterial",5,5,5,5,5,5,0
+3,"Major arterial",9,9,5,5,5,5,1
+4,"Collector",4,4,4,4,4,4,0
+5,"Local collector",4,4,4,4,4,4,0
+6,"Rural collector",2,2,2,2,2,2,0
+7,"Local Road",4,4,4,4,4,4,0
+8,"Freeway ramps",3,3,3,1,1,1,0
+9,"Local ramps",4,4,4,3,3,3,0
+10,"Zone connectors",1,1,1,1,1,1,0
