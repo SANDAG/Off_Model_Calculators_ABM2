@@ -63,11 +63,9 @@ planning staff:
 * Use of Community-Based Coverage Areas and Regional Growth Forecast (14.1.1)
 * Average daily one-way driving trips per household
 * Average number of years for which behavior change persists
-* Average one-way trip length ofr driving trips
+* Average one-way trip length for driving trips
 
-This sheet will also require the following inputs for each MGRA in each model 
-year/scenario:
-* Total population (for each MGRA)
+
 
 # Electric Vehicles
 Have not received a draft version for review.
@@ -88,7 +86,9 @@ This sheet will also require the following inputs for each model year/scenario:
 	* HBW drive alone trips with poor/no transit service
 	* Commuter shuttle trips, unsubsidized
 	* Average trip distance, full fare
-*	TAP to TAP Commuter rail transit skim, AM Peak, (total in-vehicle time (mf1036), first wait time (mf1027), transfer wait time (mf1028), fare (mf1030), transfer walk time(mf1033))
+*	TAP to TAP Commuter rail transit skim, AM Peak, (total in-vehicle time (mf1036), 
+	first wait time (mf1027), transfer wait time (mf1028), fare (mf1030), transfer 
+	walk time(mf1033))
 *	MGRA to TAP walk connectors (walkMgraTapEquivMinutes.csv)
 *	TAZ-to-TAZ travel time, drive alone toll by medium VOT [STM_2016.CSV], AM Peak (mf461)
 *	TAZ-to-TAZ travel distance, drive alone toll by medium VOT [dist_2016.CSV], AM Peak (mf462)
