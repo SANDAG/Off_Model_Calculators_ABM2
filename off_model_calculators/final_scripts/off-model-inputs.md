@@ -17,12 +17,6 @@ a single scenario for each model year.) There are 7 off model calculators:
 # Bikeshare
 This sheet will require the confirmation of the following values from SANDAG 
 planning staff:
-* Main Sheet
-	* Car Substitution rates (for regular bikes and ebikes)
-	* Average bike trip distances (for regular bikes and ebikes)
-* Bikeshare Demand
-	* Bikes / 1,000 population per MSA
-	* Confirmation of 50% ebike mode share
 * Bikeway Miles
 	* 2050 Bikeway miles estimate
 * Model Data (by year, scenario and mgra)
@@ -36,10 +30,6 @@ planning staff:
 # Carshare
 This sheet will require the confirmation of the following values from SANDAG
 planning staff:
-* Carshare Demand
-	* Threshold for urban vs. suburban population density (D5)
-	* Percent of urban/suburban/college employees/college students/military population 
-		expected to become carshare members.
 * Model Data (by year, scenario, and mgra)
 	* Total population
 	* Adult population
@@ -136,8 +126,6 @@ planning staff:
 This sheet will require the confirmation of the following values from SANDAG 
 planning staff:
 
-* Main Sheet
-	* Assumed vanpool growth rate due to a subsidy increase (by year, van type)
 * Vanpool Demand FOR ML (Non-Mil), ML (mil), Subsidy
 	* Average one-way weekday travel time (2016)
 	* Average travel time savings (by origin msa, destination msa, by year)
