@@ -36,9 +36,6 @@ planning staff:
 # Carshare
 This sheet will require the confirmation of the following values from SANDAG
 planning staff:
-* Main Sheet
-	* Percent membership in one-way carsharing
-	* Daily VMT reduction per round-trip/one-way carsharing member
 * Carshare Demand
 	* Threshold for urban vs. suburban population density (D5)
 	* Percent of urban/suburban/college employees/college students/military population 
