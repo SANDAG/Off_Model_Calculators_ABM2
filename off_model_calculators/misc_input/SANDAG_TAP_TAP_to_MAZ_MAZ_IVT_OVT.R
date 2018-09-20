@@ -27,28 +27,58 @@ Scenario=c("2016","2020","2025nb","2035nb","2035_D","2035_Fx","2035_E_minus_test
 for (s in Scenario){
   
   # Update input file paths here!
-  main_dir=paste0("T:/RTP/2019RP/rp19_scen/abm_runs_bod/",s,"/")  
+  main_dir            <- paste0("T:/RTP/2019RP/rp19_scen/abm_runs_bod/",s,"/")  
   skim_transit_file   <- "output/transit_skims.omx"
-  tripfile    <- "output/indivTripData_3.csv" 
-  walktime_file <- "output/walkMgraTapEquivMinutes.csv"
-  #mgra_taz_file    <- "mgra_taz.dbf" this is not being used in the script
-  output_dir  <- paste0(dataDir,"output/")
+  tripfile            <- "output/indivTripData_3.csv" 
+  walktime_file       <- "output/walkMgraTapEquivMinutes.csv"
+  flagFile            <- "MicrotransitAreaFlags.csv"         # file contain MAZ and corresponding MSA and FRED area flags
+  skim_file           <- "output/traffic_skims_AM.omx"
+  mapping_file        <- "mgra_taz_msa_xwalk.csv "
+  output_dir          <- paste0(dataDir,"output/")
   #--------------------------------------------------------------------------------------------------------------------
   
   #read files
-  indiv_trip  <- fread(paste0(main_dir,tripfile), header = T, sep = ",")
-  walktime    <- fread(paste0(main_dir,walktime_file), header = T, sep = ",")
-  walk_time <- read_omx(paste0(main_dir,skim_transit_file) , "AM_ALLPEN_XFERWALK")
+  indiv_trip         <- fread(paste0(main_dir,tripfile), header = T, sep = ",")
+  walktime           <- fread(paste0(main_dir,walktime_file), header = T, sep = ",")
+  walk_time          <- read_omx(paste0(main_dir,skim_transit_file) , "AM_ALLPEN_XFERWALK")
   transfer_wait_time <- read_omx(paste0(main_dir,skim_transit_file) , "AM_ALLPEN_XFERWAIT") 
-  initial_wait_time <- read_omx(paste0(main_dir,skim_transit_file) , "AM_ALLPEN_FIRSTWAIT")
-  IVT <- read_omx(paste0(main_dir,skim_transit_file) , "AM_ALLPEN_TOTALIVTT")
+  initial_wait_time  <- read_omx(paste0(main_dir,skim_transit_file) , "AM_ALLPEN_FIRSTWAIT")
+  IVT                <- read_omx(paste0(main_dir,skim_transit_file) , "AM_ALLPEN_TOTALIVTT")
+  MTAflags           <- read.csv(paste0(dataDir, flagFile), header = T, stringsAsFactors = F)
+  skim_DA            <- read_omx(paste0(main_dir,skim_file), "AM_SOVGPM_DIST")
+  mapping            <- fread(paste0(dataDir,mapping_file), header = T, sep = ",")
+  
+  
+  
   # filter out non-work trips
   # aggregate individual trips by origin and destination MAZs
   ptrip_MAZ  <- indiv_trip %>% 
     filter(orig_purpose == "Home" & dest_purpose == "Work") %>% 
-    group_by(orig_mgra, dest_mgra) %>% 
-    summarise(count = n()) %>% 
+    group_by(orig_mgra, dest_mgra,trip_mode) %>% 
+    summarise(count = n(), board_tap= min(trip_board_tap), allight_tap= min(trip_alight_tap)) %>% 
     ungroup()
+  
+  #reshape distance skim and attach them to trip file
+  r=dim(skim_DA)
+  skim_DA_reshaped <- data.frame(OTAZ = rep(1:r[1],each=r[1]), DTAZ = rep(1:r[1],r[1]) , Distance=c(t(DA_distance)))
+  mapping_orig <- mapping %>%
+    rename(orig_mgra = mgra, orig_TAZ = taz, orig_MSA = msa)
+  mapping_dest <- mapping %>%
+    rename(dest_mgra = mgra, dest_TAZ = taz, dest_MSA = msa)
+  distance <- indiv_trip %>%
+    select(orig_mgra,dest_mgra)%>%
+    left_join(mapping_orig, by = "orig_mgra") %>%
+    left_join(mapping_dest, by = "dest_mgra") %>%
+    left_join(skim_DA_reshaped, by = c("orig_TAZ"="OTAZ","dest_TAZ"="DTAZ")) %>%
+    group_by(orig_mgra,dest_mgra)%>%
+    summarise(Distance=min(Distance))
+  #add chariot flags
+  MTAflags_colName <- c("mgra", "msa", "TAZ", "fred_flag", "chariot_flag",
+                        "year_fred", "year_chariot")
+  colnames(MTAflags) <- MTAflags_colName
+  MTAflags <- MTAflags %>%
+    mutate(fred_flag    = ifelse(year_fred > 2016, 0, fred_flag),
+           chariot_flag = ifelse(year_chariot > 2016, 0, chariot_flag))
   
   #Reading the required TAP tp TAP skim files. OMX files are first converted to dataframes and being reshaped to previous version 
   #XFERTIME <- fread(paste0(dataDir, "transit_skims/walk_time.csv"),
@@ -126,8 +156,11 @@ for (s in Scenario){
     left_join(TTime_TAP, by = "index", all.x = T) %>%
     mutate(OVT = maztime - IVT,
            maztime = ifelse(is.na(IVT), NA, maztime)) %>% 
-    select(orig_mgra, dest_mgra, count, maztime, IVT, OVT) %>% 
-    rename(totTime = maztime)
+    left_join(distance,by=c("orig_mgra"="orig_mgra","dest_mgra"="dest_mgra"))%>%
+    left_join(MTAflags,by=c("dest_mgra"="mgra"))%>%
+    rename("dest_chariot_flag"=chariot_flag,"best_orig_tap"= OTAP.x,"best_dest_tap"= DTAP.x)%>%
+    mutate(actual_transit_time=IVT+OVT, percieved_transit_time= IVT+2.5*OVT)%>%
+    select(orig_mgra, dest_mgra,trip_mode, Distance, dest_chariot_flag,best_orig_tap,best_dest_tap, board_tap, allight_tap, count, actual_transit_time, percieved_transit_time) 
   
   
   write.csv(maz_transitTime,paste0(output_dir, "MAZ_MAZ_TransitTime.csv"), row.names = F)
