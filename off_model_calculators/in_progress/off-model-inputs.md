@@ -44,6 +44,10 @@ planning staff:
 	* MSA
 	* Carshare_flag
 	* Univ_flag
+	* MLB_flag
+* Carshare Demand (by year, scenario, and MSA)
+        * pop_urban (assuming population density > 17)
+	* pop_suburban (assuming population density <= 17)
 * Emission Factors
 	* Confirm use of 2014 EMFAC or 2017 EMFAC values from ABM 14.0.0
 	* 2050 EMFAC values if any data is to be generated
