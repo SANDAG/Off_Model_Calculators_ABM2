@@ -91,12 +91,22 @@ for (s in Scenario){
     DA_group <- data_group(DA_MSA)
     SV_group <- data_group(SV_MSA)
     ## For Military Bases
+    
     MB_DA_group <- DA_MSA%>%
       filter(dest %in% mb)%>%
-      data_group()
+      data_group()%>%
+      mutate("2"=0,"3"=0,"5"=0,"6"=0,"7"=0,"8"=0,"9"=0)%>%
+      select(as.character(0:9))
     MB_SV_group <- SV_MSA%>%
       filter(dest %in% mb)%>%
-      data_group()
+      data_group()%>%
+      mutate("2"=0,"3"=0,"5"=0,"6"=0,"7"=0,"8"=0,"9"=0)%>%
+      select(as.character(0:9))
+    
+    rownames(MB_DA_group)=c(0:9)
+    MB_DA_group[,1]=NULL
+    rownames( MB_SV_group)=c(0:9)
+    MB_SV_group[,1]=NULL
     rownames(SV_group)=c(0:9)
     SV_group[,1]=NULL
     rownames(DA_group)=c(0:9)
