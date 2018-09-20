@@ -1,0 +1,158 @@
+# Off Model Calculator Work Flow
+This document describes the work flow required to run each of the off model 
+calculators prepared by SANDAG's TDM and planning staff.
+
+Each of these off model calculators will need to be run for every 2035 build 
+scenario. (The sheet names will need to be updated, since each sheet can only hold
+a single scenario for each model year.) 
+
+[Why only for 2035; don't they need to be run for all the scenario years?]
+
+There are 7 off model calculators:
+* Bikeshare
+* Carshare
+* Community Based Transportation Programs (CBTP)
+* Electric Vehicles
+*	Microtransit
+* Pooled Rides
+* Vanpool
+	* SANDAG ABM Transit Mode Share (binomial logit substitute)  -- why is it singled out?  It's part of micro-transit
+
+# Bikeshare
+This sheet will require the confirmation of the following values from SANDAG 
+planning staff:
+* Main Sheet
+	* Average bike trip distances (for regular bikes and ebikes) -- keep current assumption or replace with a value derived from ABM outputs?
+	* Confirmation of 50% ebike mode share
+* Bikeway Miles
+	* Bikeway miles estimate (by year, scenario and MSA)
+* Model Data (by year, scenario and mgra)
+	* Total population
+* Emission Factors (by year, scenario)
+	* Confirm use of 2014 EMFAC or 2017 EMFAC values from 14.0.0
+	* 2050 EMFAC values if any data is to be generated
+
+# Carshare
+This sheet will require the confirmation of the following values from SANDAG
+planning staff:
+* Model Data (by year, scenario, and mgra)
+	* Total population
+	* Adult population
+	* Total population density (MGRA population / MGRA total area)
+	* Total employment
+	* College student enrollment
+* Emission Factors
+	* Confirm use of 2014 EMFAC or 2017 EMFAC values from 14.0.0
+	* 2050 EMFAC values if any data is to be generated
+
+# CBTP
+This sheet will require the confirmation of the following values from SANDAG 
+planning staff:
+
+* Main Sheet
+	* Average daily one-way driving trips per household
+	* Average number of years for which behavior change persists
+	* Average one-way trip length for driving trips
+* Community-Based Coverage Areas
+	* Use of Community-Based Coverage Areas and Regional Growth Forecast (14.1.1)
+* Model Data (by year, scenario and mgra)
+	* Total population
+* Emission Factors
+	* Confirm use of 2014 EMFAC or 2017 EMFAC values from 14.0.0
+	* 2050 EMFAC values if any data is to be generated
+	
+# Electric Vehicles
+Have not reviewed draft.
+
+# Microtransit
+!Need to add mode choice logic from excel sheet into R script!
+This sheet will require the confirmation of the following values from SANDAG 
+planning staff:
+
+* Main Sheet
+	* Average distance of auto trips 2 miles long or shorter, urban core market (by year)
+	* Value of time definition [though it seems they really prefer to use the median income, so we should just update it; the calculator is currently using the mean income]
+* Model Data NEV Shuttle (by year, orig_msa, dest_msa; from R script? Yes)
+	* person_trips
+	* auto_trips
+* Model Data CB Shuttle (by orig_msa, dest_msa, year; from R script? This one comes from ABMTransitModeShare.xlsx)
+	* Home to Work Person Trips to Employment Centers
+	* Home to Work Drive Alone Trips to Employment Centers											
+	* Home to Work Drive Alone Trips to Employment Centers, with no or poor fixed-route transit service											
+	* Commuter Shuttle Trips, Unsubsidized											
+	* Average Trip Distance, Full Fare 											
+* Model Data (by year, scenario and mgra)
+	* Total Employment
+	*	Total population
+* Emission Factors
+	* Confirm use of 2014 EMFAC or 2017 EMFAC values from 14.0.0
+	* 2050 EMFAC values if any data is to be generated
+
+
+# Pooled Rides – For each scenario year:
+This sheet will require the confirmation of the following values from SANDAG 
+planning staff:
+
+* Main Sheet
+	* Pooled Ride ASCs (work, nonwork; 0, 1, 2 cars), )  -- The ASCs will come from me, but we need SANDAG to review and ok them
+	* Pooling Demand Subsidy for work trips 
+	* Trips (by year, origin msa, destination msa, period, mode, purpose, number of autos)
+* Model Skims Data (by year, origin msa, destination msa, period)
+	*	avg_datime	
+	* avg_srtime	
+	* avg_distance
+* Population and Employment (by year and mgra)
+	* Total employment
+	* Total population
+* Emission Factors
+	* Confirm use of 2014 EMFAC or 2017 EMFAC values from 14.0.0
+	* 2050 EMFAC values if any data is to be generated
+
+# Vanpool
+This sheet will require the confirmation of the following values from SANDAG 
+planning staff:
+
+* Main Sheet
+	* Assumed vanpool growth rate due to a subsidy increase (by year, van type)  -- No, SANDAG already decided on no additional lease cost subsidy beyond the current one ($400)
+* Vanpool Demand FOR ML (Non-Mil), ML (mil)
+	* Average one-way weekday travel time (2016)
+	* Average travel time savings (by origin msa, destination msa, by year)
+* Employment Forecast SANDAG (by year)
+	* scenario_id	
+	*msa_modeling_1	
+	* name	
+	* emp_ag	
+	* emp_const_non_bldg_prod	
+	* emp_const_non_bldg_office	
+	* emp_utilities_prod	
+	* emp_utilities_office	
+	* emp_const_bldg_prod	
+	* emp_const_bldg_office	
+	* emp_mfg_prod	
+	* emp_mfg_office	
+	* emp_whsle_whs	
+	* emp_trans	
+	* emp_retail	
+	* emp_prof_bus_svcs	
+	* emp_prof_bus_svcs_bldg_maint	
+	* emp_pvt_ed_k12	
+	* emp_pvt_ed_post_k12_oth	
+	* emp_health	
+	* emp_personal_svcs_office	
+	* emp_amusement	emp_hotel	
+	* emp_restaurant_bar	
+	* emp_personal_svcs_retail	
+	* emp_religious	emp_pvt_hh	
+	* emp_state_local_gov_ent	
+	* emp_fed_non_mil	emp_fed_mil	
+	* emp_state_local_gov_blue	
+	* emp_state_local_gov_white	
+	* emp_public_ed	
+	* emp_own_occ_dwell_mgmt	
+	* emp_total
+* Population Forecast (by year, mgra)
+	* Total households
+	* Total population	
+* Emission Factors
+	* Confirm use of 2014 EMFAC or 2017 EMFAC values from 14.0.0
+	* 2050 EMFAC values if any data is to be generated
