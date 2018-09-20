@@ -157,7 +157,8 @@ planning staff:
 	* emp_personal_svcs_retail	
 	* emp_religious	emp_pvt_hh	
 	* emp_state_local_gov_ent	
-	* emp_fed_non_mil	emp_fed_mil	
+	* emp_fed_non_mil	
+	* emp_fed_mil	
 	* emp_state_local_gov_blue	
 	* emp_state_local_gov_white	
 	* emp_public_ed	
