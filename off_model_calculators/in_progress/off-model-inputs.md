@@ -60,10 +60,10 @@ planning staff:
 	* Average daily one-way driving trips per household
 	* Average number of years for which behavior change persists
 	* Average one-way trip length for driving trips
-* Community-Based Coverage Areas
+* Community-Based Coverage Areas [only total households is used, delete the unused information]
 	* Use of Community-Based Coverage Areas and Regional Growth Forecast (14.1.1)
-* Model Data (by year, scenario and mgra)
-	* Total population
+* [Model Data (by year, scenario and mgra)
+	* Total population] [as the disaggregate pop is unnecessary. suggest to use regional total pop directly]
 * Emission Factors
 	* Confirm use of 2014 EMFAC or 2017 EMFAC values from ABM 14.0.0
 	* 2050 EMFAC values if any data is to be generated
