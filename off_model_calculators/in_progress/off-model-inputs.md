@@ -129,7 +129,7 @@ planning staff:
 	* Average one-way weekday travel time (2016) 
 	* Average travel time savings (by origin msa, destination msa, by year)
 	These two files are produced by "SANDAG_TravelTimeSaving.R" script for both military and non-military 
-
+* Employment Forecast SCAG (total by year and county)
 * Employment Forecast SANDAG (by year)
 	* scenario_id	
 	*msa_modeling_1	
