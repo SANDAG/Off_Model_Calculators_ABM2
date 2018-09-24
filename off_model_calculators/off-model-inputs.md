@@ -88,19 +88,19 @@ There are 7 off model calculators:
 This sheet will require the confirmation of the following values from SANDAG 
 planning staff:
 * Bikeway Miles
-	* Bikeway miles estimate (by year, scenario and MSA)
-* Model Data (by year, scenario and mgra)
+	* Bikeway miles estimate (by year, scenario and MSA) [RP2019_BikeLaneMileageInputs_ForMarisa.xlsx]
+* Model Data (by year, scenario and mgra) [pop_by_mgra_sr14_preliminary.xlsx]
 	* Total population
 	* MSA_ID
 	* Bikeshare flag
-* Emission Factors (by year, scenario)
+* Emission Factors (by year, scenario) [EMFAC_SB375CO2_emissionFactors.xlsx]
 	* Confirm use of 2014 EMFAC or 2017 EMFAC values from ABM 14.0.0
 	* Updated EMFAC values 
 
 ## Carshare
 This sheet will require the confirmation of the following values from SANDAG
 planning staff:
-* Model Data (by year, scenario, and mgra)
+* Model Data (by year, scenario, and mgra) [pop_by_mgra_sr14_preliminary.xlsx]
 	* Total population
 	* Adult population
 	* Total population density (MGRA population / MGRA total area)
@@ -110,7 +110,7 @@ planning staff:
 	* Carshare_flag
 	* Univ_flag
 	* MLB_flag
-* Emission Factors
+* Emission Factors (by year, scenario) [EMFAC_SB375CO2_emissionFactors.xlsx]
 	* Confirm use of 2014 EMFAC or 2017 EMFAC values from ABM 14.0.0
 	* Updated EMFAC values 
 
@@ -119,10 +119,13 @@ This sheet will require the confirmation of the following values from SANDAG
 planning staff:
 
 * Main Sheet
-	* Average daily one-way driving trips per household
-	* Average one-way trip length for driving trips
-	* Total Regional Population (instead of disaggregate MGRA population)
-* Emission Factors
+	* Average daily one-way driving trips per household 
+	[avg_vtrip_rates_length_CBTP_off_model_calc.xlsx]
+	* Average one-way trip length for driving trips 
+	[avg_vtrip_rates_length_CBTP_off_model_calc.xlsx]
+	* Total Regional Population (instead of disaggregate MGRA population) (Ying, will 
+	you please add this information to [pop_by_mgra_sr14_preliminary.xlsx])
+* Emission Factors (by year, scenario) [EMFAC_SB375CO2_emissionFactors.xlsx]
 	* Confirm use of 2014 EMFAC or 2017 EMFAC values from ABM 14.0.0
 	* Updated EMFAC values
 	
