@@ -92,6 +92,7 @@ planning staff:
 	* Bikeway miles estimate (by year, scenario and MSA)
 * Model Data (by year, scenario and mgra)
 	* Total population
+	* bikeshare_flag
 * Emission Factors (by year, scenario)
 	* Confirm use of 2014 EMFAC or 2017 EMFAC values from ABM 14.0.0
 	* 2050 EMFAC values if any data is to be generated
@@ -122,7 +123,6 @@ planning staff:
 
 * Main Sheet
 	* Average daily one-way driving trips per household
-	* Average number of years for which behavior change persists
 	* Average one-way trip length for driving trips
 * Community-Based Coverage Areas [only total households is used, delete the unused information]
 	* Use of Community-Based Coverage Areas and Regional Growth Forecast (14.1.1)
