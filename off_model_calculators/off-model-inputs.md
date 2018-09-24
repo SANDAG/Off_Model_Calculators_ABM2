@@ -87,14 +87,15 @@ There are 7 off model calculators:
 ## Bikeshare
 This sheet will require the confirmation of the following values from SANDAG 
 planning staff:
-* Main Sheet
 * Bikeway Miles
 	* Bikeway miles estimate (by year, scenario and MSA)
 * Model Data (by year, scenario and mgra)
 	* Total population
+	* MSA_ID
+	* Bikeshare flag
 * Emission Factors (by year, scenario)
 	* Confirm use of 2014 EMFAC or 2017 EMFAC values from ABM 14.0.0
-	* 2050 EMFAC values if any data is to be generated
+	* Updated EMFAC values 
 
 ## Carshare
 This sheet will require the confirmation of the following values from SANDAG
@@ -109,12 +110,9 @@ planning staff:
 	* Carshare_flag
 	* Univ_flag
 	* MLB_flag
-* Carshare Demand (by year, scenario, and MSA)
-    * pop_urban (assuming population density > 17)
-	* pop_suburban (assuming population density <= 17)
 * Emission Factors
 	* Confirm use of 2014 EMFAC or 2017 EMFAC values from ABM 14.0.0
-	* 2050 EMFAC values if any data is to be generated
+	* Updated EMFAC values 
 
 ## CBTP
 This sheet will require the confirmation of the following values from SANDAG 
@@ -122,15 +120,11 @@ planning staff:
 
 * Main Sheet
 	* Average daily one-way driving trips per household
-	* Average number of years for which behavior change persists
 	* Average one-way trip length for driving trips
-* Community-Based Coverage Areas [only total households is used, delete the unused information]
-	* Use of Community-Based Coverage Areas and Regional Growth Forecast (14.1.1)
-* [Model Data (by year, scenario and mgra)
-	* Total population] [as the disaggregate pop is unnecessary. suggest to use regional total pop directly]
+	* Total Regional Population (instead of disaggregate MGRA population)
 * Emission Factors
 	* Confirm use of 2014 EMFAC or 2017 EMFAC values from ABM 14.0.0
-	* 2050 EMFAC values if any data is to be generated
+	* Updated EMFAC values
 	
 ## Electric Vehicles
 Have not reviewed draft.
