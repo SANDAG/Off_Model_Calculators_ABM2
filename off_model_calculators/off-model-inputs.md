@@ -123,8 +123,8 @@ planning staff:
 	[avg_vtrip_rates_length_CBTP_off_model_calc.xlsx]
 	* Average one-way trip length for driving trips 
 	[avg_vtrip_rates_length_CBTP_off_model_calc.xlsx]
-	* Total Regional Population (instead of disaggregate MGRA population) (Ying, will 
-	you please add this information to [pop_by_mgra_sr14_preliminary.xlsx])
+	* Total Regional Population (Ying, will 
+	you please add this information to [pop_by_mgra_sr14_preliminary.xlsx], (Will do)
 * Emission Factors (by year, scenario) [EMFAC_SB375CO2_emissionFactors.xlsx]
 	* Confirm use of 2014 EMFAC or 2017 EMFAC values from ABM 14.0.0
 	* Updated EMFAC values
