@@ -182,15 +182,12 @@ This sheet will require the confirmation of the following values from SANDAG
 planning staff:
 
 * Main Sheet
-	* Total Regional Population by year
+	* Total Regional Population by year [pop_by_mgra_sr14_preliminary.xlsx]
 * Vanpool Demand FOR ML (Non-Mil), ML (mil)
 	* Average one-way weekday travel time (2016) 
 	* Average travel time savings (by origin msa, destination msa, by year)
-	These two files are produced by "SANDAG_TravelTimeSaving.R" script for both military and non-military 
-	* Probability of vanpooling (probvp) (C60)
-	* Marginal disutility of time (civt) (C61)
-* Employment Forecast SCAG (total by year and county)
-* Employment Forecast SANDAG (by year)
+	These  files are produced by "SANDAG_TravelTimeSaving.R" script for both military and non-military 
+* Employment Forecast SANDAG (by year) [emp_msa_preliminarySR14.xlsx]
 	* scenario_id	
 	*msa_modeling_1	
 	* name	
@@ -224,9 +221,6 @@ planning staff:
 	* emp_public_ed	
 	* emp_own_occ_dwell_mgmt	
 	* emp_total
-* Population Forecast (by year, mgra)
-	* Total households
-	* Total population	
 * Emission Factors
 	* Confirm use of 2014 EMFAC or 2017 EMFAC values from ABM 14.0.0
-	* 2050 EMFAC values if any data is to be generated
+	* Updated EMFAC values
