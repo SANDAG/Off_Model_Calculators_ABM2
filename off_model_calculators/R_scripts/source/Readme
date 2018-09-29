@@ -1,0 +1,3 @@
+*Change the properties file based on local directories. 
+*Scenarios and scripts can be selected in properties file
+*Modify the properties file directory in batch file via text editor and the run it
