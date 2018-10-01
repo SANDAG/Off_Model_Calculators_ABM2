@@ -118,6 +118,6 @@ skim_summary <- skim_summary_temp %>%
 
 
 # write summary tables out!    
-write.csv(trip_summary, paste0(output_dir,"PooledRides\pooledride_trips_", s,"_", as.character(Sys.Date()),".csv" ), row.names = F)
-write.csv(skim_summary, paste0(output_dir,"PooledRides\pooledride_times_", s,"_", as.character(Sys.Date()),".csv" ), row.names = F)
+write.csv(trip_summary, paste0(output_dir,"PooledRide/pooledride_trips_", s,"_", as.character(Sys.Date()),".csv" ), row.names = F)
+write.csv(skim_summary, paste0(output_dir,"PooledRide/pooledride_times_", s,"_", as.character(Sys.Date()),".csv" ), row.names = F)
 #}

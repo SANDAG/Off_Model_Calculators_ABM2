@@ -95,7 +95,7 @@
   itrip <- itrip %>% 
     left_join(MTAflags, by = "dest_mgra")
   #caculate the average distance for auto trips <=2 miles with destination in MGRAs with Nev flag=1 
-  average_Dist= mean(filter(itrip,trip_mode <= 6,dest_nevshuttle_flag.x==1)$Dist)
+  average_Dist= mean(filter(itrip,trip_mode <= 6,dest_nevshuttle_flag==1)$Dist)
   # create auto trip summary    
   vtrip <- itrip %>%
     filter(trip_mode <= 6) %>% 
