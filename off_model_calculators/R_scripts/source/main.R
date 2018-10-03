@@ -4,7 +4,7 @@
 
 args = commandArgs(trailingOnly = TRUE)
 properties_file <- args[1]
-#properties_file <- "T:/RTP/2019RP/rp19_scen/abm_runs_bod/r scripts off-model/test.properties"
+#properties_file <- "T:/RTP/2019RP/rp19_scen/abm_runs_bod/r scripts off-model/source/test.properties"
 
 list.of.packages <- c("data.table", "foreign", "tidyverse","properties")
 new.packages <- list.of.packages[!(list.of.packages %in% installed.packages()[,"Package"])]
@@ -24,9 +24,10 @@ travel_time_savings          <- as.logical(as.numeric(trimws(properties$`travel.
 travel_times_2016            <- as.logical(as.numeric(trimws(properties$`travel.times.2016`)))
 micrtotransit_calculator_NEV <- as.logical(as.numeric(trimws(properties$`micrtotransit.calculator.NEV`)))
 micrtotransit_calculator_CB  <- as.logical(as.numeric(trimws(properties$`micrtotransit.calculator.CB`)))
+main_dir                     <- trimws(properties$`main.dir`)
 source_dir                   <- trimws(properties$`source.dir`)
 dataDir                      <- trimws(properties$`data.dir`)
-output_dir                   <- paste0(dataDir,"output/")                                                                         
+output_dir                   <- paste0(main_dir,"output/")                                                                         
 
 # run travel times 2016 out of the loop just for one time                                                                        
 if (travel_times_2016 ) {
