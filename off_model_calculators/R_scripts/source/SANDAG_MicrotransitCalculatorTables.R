@@ -50,8 +50,8 @@
                         "year_nevshuttle", "year_chariot")
   colnames(MTAflags) <- MTAflags_colName
   MTAflags <- MTAflags %>%
-    mutate(nevshuttle_flag    = ifelse(year_nevshuttle > 2016, 0, nevshuttle_flag),
-           chariot_flag = ifelse(year_chariot > 2016, 0, chariot_flag))
+    mutate(nevshuttle_flag    = ifelse(year_nevshuttle > YEAR, 0, nevshuttle_flag),
+           chariot_flag = ifelse(year_chariot > YEAR, 0, chariot_flag))
   distance= itrip2%>%
     select(ORIG_MGRA,DEST_MGRA,TRIP_DIST)%>%
     rename(orig_mgra=`ORIG_MGRA`,dest_mgra=`DEST_MGRA`,Dist =`TRIP_DIST`)%>%

@@ -44,6 +44,7 @@
   #--------------------------------------------------------------------------------------------------------------------
   
   #read files
+  YEAR               <- as.numeric(substr(s,1,4))
   indiv_trip         <- fread(paste0(main_dir,tripfile), header = T, sep = ",")
   walktime           <- fread(paste0(main_dir,walktime_file), header = T, sep = ",")
   walk_time          <- read_omx(paste0(main_dir,skim_transit_file) , "AM_ALLPEN_XFERWALK")
@@ -64,6 +65,7 @@
 # aggregate individual trips by origin and destination MAZs
   ptrip_MAZ  <- indiv_trip %>% 
   filter(orig_purpose == "Home" & dest_purpose == "Work") %>%
+  filter(trip_mode==1 |trip_mode==2)%>%
 # filter(trip_mode==9 |trip_mode==1 |trip_mode==2)%>%
 # filter(between(stop_period,4,9))%>%
   group_by(orig_mgra, dest_mgra,trip_mode) %>% 
@@ -88,8 +90,8 @@
                         "year_fred", "year_chariot")
   colnames(MTAflags) <- MTAflags_colName
   MTAflags <- MTAflags %>%
-    mutate(fred_flag    = ifelse(year_fred > 2016, 0, fred_flag),
-           chariot_flag = ifelse(year_chariot > 2016, 0, chariot_flag))
+    mutate(fred_flag    = ifelse(year_fred > YEAR, 0, fred_flag),
+           chariot_flag = ifelse(year_chariot > YEAR, 0, chariot_flag))
   
   #Reading the required TAP tp TAP skim files. OMX files are first converted to dataframes and being reshaped to previous version 
   #XFERTIME <- fread(paste0(dataDir, "transit_skims/walk_time.csv"),
