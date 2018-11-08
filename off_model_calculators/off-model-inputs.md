@@ -231,9 +231,6 @@ planning staff:
 	* emp_public_ed	
 	* emp_own_occ_dwell_mgmt	
 	* emp_total
-* Population Forecast (by year, mgra)
-	* Total households
-	* Total population	
 * Emission Factors
 	* Confirm use of 2014 EMFAC or 2017 EMFAC values from ABM 14.0.0
 	* 2050 EMFAC values if any data is to be generated
